@@ -1,4 +1,6 @@
-# Kotlin Koans
+# Module A: Kotlin Koans
+
+Sourced from [the official Kotlin Koans](https://github.com/Kotlin/kotlin-koans) with references to documentation.
 
 ## Indexes for exercises online
 
