@@ -11,3 +11,5 @@ has the implementation for 2017 day 1 already done.
 
 And last; if you check out the [c-spring-boot](./c-spring-boot) module you can implement a 'number' service that handles a few end-points for prime numbers 
 and fibonacci sequences. Also you can just go and experiment yourself if you want!
+
+There's also a lot of [example code](./examples/src/test/examples) you can use for inspiration!

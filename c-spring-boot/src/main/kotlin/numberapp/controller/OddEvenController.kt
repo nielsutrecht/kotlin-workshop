@@ -20,7 +20,7 @@ class OddEvenController {
         return OddEvenMap(result).toMono()
     }
 
-    private fun toOddEven(n: Long) = if(n % 2 == 0L) OddEven.EVEN else OddEven.ODD
+    private fun toOddEven(n: Long) : OddEven = TODO("Please implement")
 }
 
 
