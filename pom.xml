@@ -12,6 +12,7 @@
         <module>a-koans</module>
         <module>b-advent-of-code</module>
         <module>c-spring-boot</module>
+        <module>examples</module>
     </modules>
 
     <properties>
