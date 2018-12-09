@@ -61,11 +61,11 @@ class IfWhenExamples {
     }
 
     /*
-     When can also be used to test types and here it also does smart casting
-     */
+ When can also be used to test types and here it also does smart casting
+ */
     @Test
     fun whenClassExample() {
-        val n: Any = 1
+        val n: Any = listOf(1, 1.1, "1").random()
 
         val type = when(n) {
             is Int -> n.toString()
@@ -78,7 +78,29 @@ class IfWhenExamples {
     }
 
     /*
-     When can also be used insted of long if-elseif-else blocks
+     Sealed classes are basically enums on steroids; they can have as many instances as you want
+     and can contain state. The benefit of sealed classes is that you don't need an 'else' clause.
+     */
+
+    sealed class MyType {
+        data class Int(val value: kotlin.Int) : MyType()
+        data class Bool(val value: Boolean) : MyType()
+    }
+
+    @Test
+    fun whenSealedClassExample() {
+        val t: MyType = MyType.Int(42)
+
+        val boolean = when(t) {
+            is MyType.Int -> t.value % 2 == 0
+            is MyType.Bool -> t.value
+        }
+
+        assertThat(boolean).isEqualTo(true)
+    }
+
+    /*
+     When can also be used instead of long if-elseif-else blocks
      */
     @Test
     fun plainWhen() {

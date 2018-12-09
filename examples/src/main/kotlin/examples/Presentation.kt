@@ -24,6 +24,13 @@ fun printSomethingNullable(myValue: String?) {
     myValue?.let { println(it) }
 }
 
+fun elvisOperator() {
+    val value = null
+
+    println(value ?: "default value!")
+    //             ^ elvis!
+}
+
 /*
  * No checked exceptions
  */
