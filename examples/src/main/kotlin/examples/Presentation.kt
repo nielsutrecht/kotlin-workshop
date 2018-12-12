@@ -31,6 +31,7 @@ fun elvisOperator() {
     //             ^ elvis!
 }
 
+
 /*
  * No checked exceptions
  */
@@ -38,6 +39,18 @@ fun elvisOperator() {
 fun ioException() {
     throw IOException()
 }
+
+fun tryExpression() {
+    val result = try {
+        ioException()
+        "okay"
+    } catch (e: IOException) {
+        "Boo! "
+    }
+
+    println(result)
+}
+
 
 /*
  * Immutable by default
@@ -50,6 +63,7 @@ fun variables() {
     mutable++
 
     println(mutable)
+    println(immutable + mutable)
 }
 
 fun collections() {
@@ -65,6 +79,7 @@ fun collections() {
     println(moreNumbers)
     println(immutableCopy)
 }
+
 
 /*
  * Smart casts
@@ -86,6 +101,7 @@ fun castsWhen() {
         is Int -> x * 10
     }
 }
+
 
 /*
  * String templating
@@ -118,6 +134,7 @@ fun multilineString() {
     println(testData)
 }
 
+
 /*
  * Properties
  */
@@ -139,12 +156,28 @@ class Person(
     fun increment() = counter++
 }
 
+fun properties() {
+    val person = Person("Jill", "Jackson", LocalDate.of(1980, 2, 19))
+    println(person.firstName)
+    println(person.lastName)
+    println(person.fullName)
+    println(person.increment())
+    println(person.counter)
+
+    //Also works with Java classes
+    val pojo = JavaPojo()
+    pojo.someString = person.fullName
+
+    println(pojo.someOtherString)
+}
+
+
 /*
  * Short hand functions
  */
 
 fun fullExample(): List<Person> {
-    val persons = listOf(
+    return listOf(
             Person(
                     "Jack",
                     "Johnson",
@@ -154,8 +187,6 @@ fun fullExample(): List<Person> {
                     "Johnson",
                     LocalDate.now().minusYears(16))
     )
-
-    return persons
 }
 
 fun shortExample() = listOf(
@@ -171,6 +202,7 @@ fun shortExample() = listOf(
 
 fun filterExample() = shortExample().filter { it.age > 18 }
 
+
 /*
  * Default and named arguments
  */
@@ -179,7 +211,9 @@ fun defaultExample(prefix: String = "(", value: String, postfix: String = ")") =
 
 fun namedArgumentsExample() {
     val value = defaultExample(postfix = "!", prefix = "[", value = "Bang!")
+    println(value)
 }
+
 
 /*
  * Data classes
@@ -201,3 +235,20 @@ fun dataClass() {
 }
 
 
+fun main(args: Array<String>) {
+    nullExample()
+    elvisOperator()
+    tryExpression()
+    variables()
+    collections()
+    castsIf()
+    castsWhen()
+    simpleTemplating()
+    complexTemplating()
+    multilineString()
+    fullExample()
+    filterExample()
+    namedArgumentsExample()
+    properties()
+    dataClass()
+}
